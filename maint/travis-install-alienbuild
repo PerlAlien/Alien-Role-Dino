@@ -14,7 +14,7 @@ dzil listdeps   --missing | cpanm -n
 dzil install --install-command 'cpanm -n -v .'
 
 
-git clone --depth 2 https://github.com/Perl5-Alien/Alien-Autotools.git /tmp/Alien-Autotools
+git clone --depth 2 https://github.com/plicease/Alien-Autotools.git /tmp/Alien-Autotools
 cd /tmp/Alien-Autotools
 dzil authordeps --missing | cpanm -n
 dzil listdeps   --missing | cpanm -n

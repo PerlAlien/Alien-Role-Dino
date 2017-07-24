@@ -12,7 +12,7 @@ isa_ok $alien, 'Alien::Base::Dino';
 
 alien_ok $alien;
 
-xs_ok do { local $/; <DATA> }, with_subtest {
+xs_ok { xs => do { local $/; <DATA> }, verbose => 1 }, with_subtest {
   my($mod) = @_;
   is($mod->is_palindrome("Something that is not a palindrome"), 0);
   is($mod->is_palindrome("Was it a car or a cat I saw?"), 1);
