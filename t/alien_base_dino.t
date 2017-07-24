@@ -18,6 +18,15 @@ xs_ok { xs => do { local $/; <DATA> }, verbose => 1 }, with_subtest {
   is($mod->is_palindrome("Was it a car or a cat I saw?"), 1);
 };
 
+ffi_ok { symbols => ['is_palindrome'] }, with_subtest {
+  my ($ffi) = @_;
+  
+  my $is_palindrome = $ffi->function(is_palindrome => ['string'] => 'int');
+  
+  is($is_palindrome->("Something that is not a palindrome"), 0);
+  is($is_palindrome->("Was it a car or a cat I saw?"), 1);
+};
+
 run_ok(['palx', 'Something that is not a palindrome'])
   ->note
   ->exit_is(2);
