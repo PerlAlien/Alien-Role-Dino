@@ -10,7 +10,7 @@ copy_letters(char *buffer, const char *original)
   while(*original != 0)
   {
     if(isalpha(*original))
-      *(buffer++) = *original;
+      *(buffer++) = tolower(*original);
     original++;
   }
   *buffer = 0;

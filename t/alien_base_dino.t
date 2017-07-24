@@ -14,15 +14,15 @@ alien_ok $alien;
 
 xs_ok do { local $/; <DATA> }, with_subtest {
   my($mod) = @_;
-  is($mod->is_palindrome("hello"), 0);
-  is($mod->is_palindrome("foof"), 1);
+  is($mod->is_palindrome("Something that is not a palindrome"), 0);
+  is($mod->is_palindrome("Was it a car or a cat I saw?"), 1);
 };
 
-run_ok(['palx', 'foo'])
+run_ok(['palx', 'Something that is not a palindrome'])
   ->note
   ->exit_is(2);
 
-run_ok(['palx', 'foof'])
+run_ok(['palx', 'Was it a car or a cat I saw?'])
   ->note
   ->success;
 
