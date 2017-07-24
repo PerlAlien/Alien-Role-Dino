@@ -10,6 +10,13 @@ use base qw( Alien::Base );
 
 sub import
 {
+  # We do NOT support the legacy Alien::Base interface for loading
+  # DLLs.
+}
+
+sub xs_load
+{
+  my($module, $version, @rest) = @_;
 }
 
 1;
