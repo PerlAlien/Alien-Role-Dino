@@ -1,15 +1,16 @@
-package Alien::Base::Dino;
+package Alien::Build::Plugin::Gather::Dino;
 
 use strict;
 use warnings;
 use 5.008001;
-use base qw( Alien::Base );
+use Alien::Build::Plugin;
 
 # ABSTRACT: Experimental support for dynamic share Alien install
 # VERSION
 
-sub import
+sub init
 {
+  my($self, $meta) = @_;
 }
 
 1;
