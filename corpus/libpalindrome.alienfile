@@ -17,7 +17,7 @@ share {
   plugin 'Build::Autoconf';
   
   build [
-    'autoreconf',
+    (map { $^O eq 'MSWin32' ? ['sh', -c => $_] : $_ } ('autoreconf -vfi')),
     '%{configure} --enable-shared',
     '%{make}',
     '%{make} install',
