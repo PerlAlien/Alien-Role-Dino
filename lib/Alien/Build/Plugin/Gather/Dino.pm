@@ -10,6 +10,28 @@ use Path::Tiny qw( path );
 # ABSTRACT: Experimental support for dynamic share Alien install
 # VERSION
 
+=head1 SYNOPSIS
+
+ use alienfile;
+ plugin 'Gather::Dini';
+
+=head1 DESCRIPTION
+
+This L<alienfile> plugins find directories inside the share directory with dynamic libraries in them
+for C<share> type installs.  This information is necessary at either build or run-time by XS modules.
+For various reasons you are probably better off building static libraries instead.  For more detail
+and rational see the runtime documentation L<Alien::Base::Dino>.
+
+=head1 SEE ALSO
+
+=over 4
+
+=item L<Alien::Base::Dino>
+
+=back
+
+=cut
+
 sub init
 {
   my($self, $meta) = @_;
