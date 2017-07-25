@@ -2,12 +2,8 @@ use Test2::V0 -no_srand => 1;
 sub require_ok ($);
 
 require_ok 'Alien::Base::Dino';
+require_ok "Alien::Base::Dino::$^O";
 require_ok 'Alien::Build::Plugin::Gather::Dino';
-
-if(-f "lib/Alien/Base/Dino/$^O.pm")
-{
-  require_ok "Alien::Base::Dino::$^O";
-}
 
 done_testing;
 

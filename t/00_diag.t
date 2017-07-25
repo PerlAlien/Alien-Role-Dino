@@ -16,6 +16,7 @@ $modules{$_} = $_ for qw(
   ExtUtils::MakeMaker
   FFI::CheckLib
   Path::Tiny
+  Test2::Mock
   Test2::V0
   Test::Alien
   Test::Alien::Build

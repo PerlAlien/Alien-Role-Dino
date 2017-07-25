@@ -42,6 +42,6 @@ sub xs_load
   }
 }
 
-eval { require "Alien/Base/Dino/$^O.pm" };
+require "Alien/Base/Dino/$^O.pm";
 
 1;
