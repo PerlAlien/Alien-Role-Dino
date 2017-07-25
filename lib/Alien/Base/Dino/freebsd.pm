@@ -1,4 +1,4 @@
-package Alien::Base::Dino::linux;
+package Alien::Base::Dino::freebsd;
 
 use strict;
 use warnings;
