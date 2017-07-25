@@ -8,6 +8,13 @@ pod_spelling_system:
   stopwords:
     - libs
     - rpath
+    - ABI
+    - DLL
+    - alienized
+    - integrators
+    - Dyna
+    - DynaShare
+    - kFreeBSD
 
 pod_coverage:
   skip: 0
