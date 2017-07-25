@@ -1,4 +1,4 @@
-package Alien::Base::Dino::cygwin;
+package Alien::Base::Dino::MSWin32;
 
 use strict;
 use warnings;

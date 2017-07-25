@@ -56,6 +56,8 @@ subtest 'use ffi' => sub {
 
 subtest 'use exe' => sub {
 
+  local $ENV{PATH} = $ENV{PATH};
+
   unshift @PATH, $alien->bin_dir;
 
   run_ok(['palx', 'Something that is not a palindrome'])
@@ -63,6 +65,10 @@ subtest 'use exe' => sub {
     ->exit_is(2);
 
   run_ok(['palx', 'Was it a car or a cat I saw?'])
+    ->note
+    ->success;
+
+  run_ok(['palx', 'racecar'])
     ->note
     ->success;
 
