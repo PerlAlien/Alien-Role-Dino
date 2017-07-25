@@ -15,6 +15,6 @@ my $prefix = $alien->runtime_prop->{prefix};
 
 like( $alien->cflags, qr{-I$prefix/include} );
 like( $alien->libs,   qr{-L$prefix/lib -lpalindrome} );
-is( $alien->runtime_prop->{rpath}, [ $^O eq 'MSWin32' ? 'bin' : 'lib' ]);
+is( $alien->runtime_prop->{rpath}, [ $^O =~ /^(MSWin32|cygwin)$/ ? 'bin' : 'lib' ]);
 
 done_testing

@@ -18,7 +18,7 @@ share {
   
   build [
     (map { $^O eq 'MSWin32' ? ['sh', -c => $_] : $_ } ('autoreconf -vfi')),
-    '%{configure} --enable-shared',
+    '%{configure} --enable-shared --disable-static',
     '%{make}',
     '%{make} install',
   ];

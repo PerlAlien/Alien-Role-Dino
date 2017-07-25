@@ -26,8 +26,20 @@ sub import
 sub xs_load
 {
   my($self, $package, $version, @rest) = @_;
-  require XSLoader;
-  XSLoader::load($package, $version);
+
+  my $load = sub {
+    require XSLoader;
+    XSLoader::load($package, $version);
+  };
+
+  if($self->can('_xs_load_wrapper'))
+  {
+    $self->_xs_load_wrapper($load, @rest);
+  }
+  else
+  {
+    $load->();
+  }
 }
 
 eval { require "Alien/Base/Dino/$^O.pm" };

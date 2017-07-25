@@ -2,38 +2,71 @@ use Test2::V0 -no_srand => 1;
 use Test::Alien::Build;
 use Test::Alien;
 use Alien::Base::Dino;
+use Test2::Mock;
+use Env qw( @PATH );
 
-alienfile_ok filename => 'corpus/libpalindrome.alienfile';
+my $alien;
 
-my $alien = alien_build_ok { class => 'Alien::Base::Dino' };
+subtest 'build' => sub {
 
-isa_ok $alien, 'Alien::Base';
-isa_ok $alien, 'Alien::Base::Dino';
+  # on Windows the thing that Dino needs to do is add 'bin'
+  # to the PATH, but Test::Alien adds that directory to the
+  # path as a matter of course so that run_ok can function.
+  # For the XS and FFI tests we don't want Test::Alien to
+  # put bin in the PATH (we want Dino to do that), so we
+  # temporarily patch Dino's bin_dir to return empty list
+  my $mock = Test2::Mock->new(
+    class => 'Alien::Base::Dino',
+    override => [
+      bin_dir => sub { () }
+    ],
+  );
 
-alien_ok $alien;
+  alienfile_ok filename => 'corpus/libpalindrome.alienfile';
 
-xs_ok { xs => do { local $/; <DATA> }, verbose => 1 }, with_subtest {
-  my($mod) = @_;
-  is($mod->is_palindrome("Something that is not a palindrome"), 0);
-  is($mod->is_palindrome("Was it a car or a cat I saw?"), 1);
+  $alien = alien_build_ok { class => 'Alien::Base::Dino' };
+
+  isa_ok $alien, 'Alien::Base';
+  isa_ok $alien, 'Alien::Base::Dino';
+
+  alien_ok $alien;
 };
 
-ffi_ok { symbols => ['is_palindrome'] }, with_subtest {
-  my ($ffi) = @_;
-  
-  my $is_palindrome = $ffi->function(is_palindrome => ['string'] => 'int');
-  
-  is($is_palindrome->("Something that is not a palindrome"), 0);
-  is($is_palindrome->("Was it a car or a cat I saw?"), 1);
+
+subtest 'use xs' => sub {
+
+  xs_ok { xs => do { local $/; <DATA> }, verbose => 1 }, with_subtest {
+    my($mod) = @_;
+    is($mod->is_palindrome("Something that is not a palindrome"), 0);
+    is($mod->is_palindrome("Was it a car or a cat I saw?"), 1);
+  };
 };
 
-run_ok(['palx', 'Something that is not a palindrome'])
-  ->note
-  ->exit_is(2);
+subtest 'use ffi' => sub {
 
-run_ok(['palx', 'Was it a car or a cat I saw?'])
-  ->note
-  ->success;
+  ffi_ok { symbols => ['is_palindrome'] }, with_subtest {
+    my ($ffi) = @_;
+  
+    my $is_palindrome = $ffi->function(is_palindrome => ['string'] => 'int');
+  
+    is($is_palindrome->("Something that is not a palindrome"), 0);
+    is($is_palindrome->("Was it a car or a cat I saw?"), 1);
+  };
+};
+
+subtest 'use exe' => sub {
+
+  unshift @PATH, $alien->bin_dir;
+
+  run_ok(['palx', 'Something that is not a palindrome'])
+    ->note
+    ->exit_is(2);
+
+  run_ok(['palx', 'Was it a car or a cat I saw?'])
+    ->note
+    ->success;
+
+};
 
 done_testing
 
