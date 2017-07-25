@@ -56,25 +56,29 @@ synopsis above).
 
 - Your Alien becomes a run-time dependency.
 
-    When you link an XS module with a static library it gets added into the 
-    DLL or `.so` file that the Perl toolchain produces.  That means when 
-    you later use it, it doesn't need anything else.  When you try to do the 
-    same thing with a dynamic library, you need that dynamic library, which 
-    is stored in a share directory of the Alien.
+    When you link your `Foo::XS` module with a static library from 
+    `Alien::libfoo` it gets added into the DLL or `.so` file that the Perl 
+    toolchain produces.  That means when you later use it, it doesn't need 
+    anything else.  When you try to do the same thing with a dynamic 
+    library, you need that dynamic library, which is stored in a share 
+    directory of `Alien::libfoo`.
 
     For people who install out of CPAN this is probably not a big deal, but 
     for operating system vendors (the people who integrate Perl modules into 
     their operating system), it is a hassle because now you need this big 
-    build tool with extra dependencies just to load an XS module.
+    build tool [Alien::Build](https://metacpan.org/pod/Alien::Build) and the alien `Alien::libfoo` with extra 
+    dependencies during runtime.  Normally you wouldn't need those packages 
+    installed for end-user use.
 
 - Upgrades can and will break your XS module.
 
-    Again, when your alien builds a static library and it gets linked into 
-    your XS DLL or `.so` file, it doesn't need the original library 
-    anymore.  If you are using a dynamic library and you do the same thing 
-    it works today, but say tomorrow you upgrade `Alien::libfoo` and it 
-    replaces the DLL or `.so` file with an incompatible API or ABI?  Now 
-    your XS module has stopped working!
+    Again, when `Alien::libfoo` builds a static library and it gets linked 
+    into a DLL or `.so` for `Foo::XS`, it doesn't need the original 
+    library anymore.  If you are using a dynamic library and you do the same 
+    thing it maybe works today, but say tomorrow you upgrade 
+    `Alien::libfoo` and it replaces the DLL or `.so` file with an 
+    incompatible API or ABI?  Now your `Foo::XS` module has stopped 
+    working!
 
 - Dynamic libraries are not portable
 
@@ -93,8 +97,8 @@ synopsis above).
     that many platforms will probably never get Alien support.
 
     Static libraries on the other hand pretty much work the same on all 
-    platforms.  Even on Windows which likes to be different, static libraries
-    are essentially the same as on Unix.
+    platforms.  Even on Windows which likes to be different, static 
+    libraries are essentially the same as on Unix.
 
 So all that said, why have I written this module, which provides support 
 for dynamic libraries?  Well, maybe I am wrong, maybe it isn't that 

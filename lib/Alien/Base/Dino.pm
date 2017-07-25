@@ -64,25 +64,29 @@ synopsis above).
 
 =item Your Alien becomes a run-time dependency.
 
-When you link an XS module with a static library it gets added into the 
-DLL or C<.so> file that the Perl toolchain produces.  That means when 
-you later use it, it doesn't need anything else.  When you try to do the 
-same thing with a dynamic library, you need that dynamic library, which 
-is stored in a share directory of the Alien.
+When you link your C<Foo::XS> module with a static library from 
+C<Alien::libfoo> it gets added into the DLL or C<.so> file that the Perl 
+toolchain produces.  That means when you later use it, it doesn't need 
+anything else.  When you try to do the same thing with a dynamic 
+library, you need that dynamic library, which is stored in a share 
+directory of C<Alien::libfoo>.
 
 For people who install out of CPAN this is probably not a big deal, but 
 for operating system vendors (the people who integrate Perl modules into 
 their operating system), it is a hassle because now you need this big 
-build tool with extra dependencies just to load an XS module.
+build tool L<Alien::Build> and the alien C<Alien::libfoo> with extra 
+dependencies during runtime.  Normally you wouldn't need those packages 
+installed for end-user use.
 
 =item Upgrades can and will break your XS module.
 
-Again, when your alien builds a static library and it gets linked into 
-your XS DLL or C<.so> file, it doesn't need the original library 
-anymore.  If you are using a dynamic library and you do the same thing 
-it works today, but say tomorrow you upgrade C<Alien::libfoo> and it 
-replaces the DLL or C<.so> file with an incompatible API or ABI?  Now 
-your XS module has stopped working!
+Again, when C<Alien::libfoo> builds a static library and it gets linked 
+into a DLL or C<.so> for C<Foo::XS>, it doesn't need the original 
+library anymore.  If you are using a dynamic library and you do the same 
+thing it maybe works today, but say tomorrow you upgrade 
+C<Alien::libfoo> and it replaces the DLL or C<.so> file with an 
+incompatible API or ABI?  Now your C<Foo::XS> module has stopped 
+working!
 
 =item Dynamic libraries are not portable
 
@@ -101,8 +105,8 @@ developers have limited time and access to many platforms, which means
 that many platforms will probably never get Alien support.
 
 Static libraries on the other hand pretty much work the same on all 
-platforms.  Even on Windows which likes to be different, static libraries
-are essentially the same as on Unix.
+platforms.  Even on Windows which likes to be different, static 
+libraries are essentially the same as on Unix.
 
 =back
 
