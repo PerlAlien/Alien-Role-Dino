@@ -9,6 +9,14 @@ Experimental support for dynamic share Alien install
     $alien->xs_load($package, $version);
     $alien->xs_load($package, $version, @other_dino_aliens);
 
+## rpath
+
+    my @dirs = $alien->rpath;
+
+Returns the list of directories that have non-system dynamic libraries
+in them.  On some systems this is needed at compile time, on others
+it is needed at run time.
+
 # AUTHOR
 
 Graham Ollis <plicease@cpan.org>
