@@ -2,6 +2,11 @@
 
 Experimental support for dynamic share Alien install
 
+# BASE CLASS
+
+This class is a subclass of [Alien::Base](https://metacpan.org/pod/Alien::Base) and as such, in inherits all
+of its methods and properties.
+
 # METHODS
 
 ## xs\_load
@@ -16,6 +21,12 @@ Experimental support for dynamic share Alien install
 Returns the list of directories that have non-system dynamic libraries
 in them.  On some systems this is needed at compile time, on others
 it is needed at run time.
+
+## libs
+
+    my $libs = $alien->libs;
+
+On some platforms, this subclass overrides the behavior of the `libs` method.
 
 # AUTHOR
 

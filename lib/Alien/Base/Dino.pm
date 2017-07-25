@@ -14,6 +14,11 @@ sub import
   # DLLs.
 }
 
+=head1 BASE CLASS
+
+This class is a subclass of L<Alien::Base> and as such, in inherits all
+of its methods and properties.
+
 =head1 METHODS
 
 =head2 xs_load
@@ -72,6 +77,14 @@ sub rpath
   
   @dir;
 }
+
+=head2 libs
+
+ my $libs = $alien->libs;
+
+On some platforms, this subclass overrides the behavior of the C<libs> method.
+
+=cut
 
 require "Alien/Base/Dino/$^O.pm";
 
