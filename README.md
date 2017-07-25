@@ -2,6 +2,13 @@
 
 Experimental support for dynamic share Alien install
 
+# METHODS
+
+## xs\_load
+
+    $alien->xs_load($package, $version);
+    $alien->xs_load($package, $version, @other_dino_aliens);
+
 # AUTHOR
 
 Graham Ollis <plicease@cpan.org>

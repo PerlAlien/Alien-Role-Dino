@@ -23,7 +23,7 @@ sub init
         next unless -d $path;
         if(find_lib(lib => '*', libpath => $path->stringify, systempath => []))
         {
-          push @{ $build->runtime_prop->{dino_path} }, $path->basename;
+          push @{ $build->runtime_prop->{rpath} }, $path->basename;
         }
       }
     },

@@ -4,6 +4,11 @@ sub require_ok ($);
 require_ok 'Alien::Base::Dino';
 require_ok 'Alien::Build::Plugin::Gather::Dino';
 
+if(-f "lib/Alien/Base/Dino/$^O.pm")
+{
+  require_ok "Alien::Base::Dino::$^O";
+}
+
 done_testing;
 
 sub require_ok ($)

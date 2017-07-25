@@ -14,6 +14,6 @@ my $prefix = $alien->runtime_prop->{prefix};
 
 is( $alien->cflags, "-I$prefix/include " );
 is( $alien->libs,   "-L$prefix/lib -lpalindrome " );
-is( $alien->runtime_prop->{dino_path}, [ $^O eq 'MSWin32' ? 'bin' : 'lib' ]);
+is( $alien->runtime_prop->{rpath}, [ $^O eq 'MSWin32' ? 'bin' : 'lib' ]);
 
 done_testing
