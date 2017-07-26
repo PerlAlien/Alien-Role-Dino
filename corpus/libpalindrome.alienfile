@@ -15,7 +15,6 @@ share {
   plugin 'Build::Autoconf';
   
   build [
-    sub { path($_)->touch for qw( configure ) },
     '%{configure} --enable-shared --disable-static',
     '%{make}',
     '%{make} install',
