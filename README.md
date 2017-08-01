@@ -1,4 +1,4 @@
-# Alien::Base::Dino [![Build Status](https://secure.travis-ci.org/plicease/Alien-Base-Dino.png)](http://travis-ci.org/plicease/Alien-Base-Dino)
+# Alien::Role::Dino [![Build Status](https://secure.travis-ci.org/plicease/Alien-Role-Dino.png)](http://travis-ci.org/plicease/Alien-Role-Dino)
 
 Experimental support for dynamic share Alien install
 
@@ -13,11 +13,14 @@ In your [alienfile](https://metacpan.org/pod/alienfile):
       plugin 'Gather::Dino';
     }
 
-Then instead of subclassing [Alien::Base](https://metacpan.org/pod/Alien::Base):
+Apply [Alien::Role::Dino](https://metacpan.org/pod/Alien::Role::Dino) to your [Alien::Base](https://metacpan.org/pod/Alien::Base) subclass:
 
     package Alien::libfoo;
     
-    use base qw( Alien::Base::Dino );
+    use base qw( Alien::Base );
+    use Role::Tiny::With qw( with );
+    
+    with 'Alien::Role::Dino';
     
     1;
 
@@ -123,10 +126,10 @@ above should!
 How does it work?  Use the bundled [alienfile](https://metacpan.org/pod/alienfile) plugin 
 [Alien::Build::Plugin::Gather::Dino](https://metacpan.org/pod/Alien::Build::Plugin::Gather::Dino).  That will find any dynamic 
 library paths in your share directory in case they are needed at 
-runtime.  Then use [Alien::Base::Dino](https://metacpan.org/pod/Alien::Base::Dino) instead of [Alien::Base](https://metacpan.org/pod/Alien::Base) as the 
-base class for your [Alien](https://metacpan.org/pod/Alien) module.  Instead of using [XSLoader](https://metacpan.org/pod/XSLoader) or 
-[DynaLoader](https://metacpan.org/pod/DynaLoader) to load your XS module, use the `xs_load` from your 
-[Alien](https://metacpan.org/pod/Alien).  Hopefully the synopsis above makes it clear.
+runtime.  Then apply this role to you [Alien::Base](https://metacpan.org/pod/Alien::Base) subclass using
+[Role::Tiny::With](https://metacpan.org/pod/Role::Tiny::With).  Instead of using [XSLoader](https://metacpan.org/pod/XSLoader) or [DynaLoader](https://metacpan.org/pod/DynaLoader)
+to load your XS module, use the `xs_load` from your [Alien](https://metacpan.org/pod/Alien).
+Hopefully the synopsis above makes it clear.
 
 # ETYMOLOGY
 
@@ -138,17 +141,7 @@ didn't want to call it "Dyna" or "Dynamic" since it is only building a
 dynamic library for share installs.  I didn't want to call it DynaShare 
 because that was getting a bit wordy.  So Dino.
 
-# BASE CLASS
-
-This class is a subclass of [Alien::Base](https://metacpan.org/pod/Alien::Base) and as such, in inherits all
-of its methods and properties.
-
 # METHODS
-
-## xs\_load
-
-    $alien->xs_load($package, $version);
-    $alien->xs_load($package, $version, @other_dino_aliens);
 
 ## rpath
 
@@ -158,11 +151,12 @@ Returns the list of directories that have non-system dynamic libraries
 in them.  On some systems this is needed at compile time, on others
 it is needed at run time.
 
-## libs
+# METHODS
 
-    my $libs = $alien->libs;
+## xs\_load
 
-On some platforms, this subclass overrides the behavior of the `libs` method.
+    $alien->xs_load($package, $version);
+    $alien->xs_load($package, $version, @other_dino_aliens);
 
 # CAVEATS
 

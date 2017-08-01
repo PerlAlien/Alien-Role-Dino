@@ -20,13 +20,13 @@ use Path::Tiny qw( path );
 This L<alienfile> plugins find directories inside the share directory with dynamic libraries in them
 for C<share> type installs.  This information is necessary at either build or run-time by XS modules.
 For various reasons you are probably better off building static libraries instead.  For more detail
-and rational see the runtime documentation L<Alien::Base::Dino>.
+and rational see the runtime documentation L<Alien::Role::Dino>.
 
 =head1 SEE ALSO
 
 =over 4
 
-=item L<Alien::Base::Dino>
+=item L<Alien::Role::Dino>
 
 =back
 

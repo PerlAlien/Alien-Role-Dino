@@ -22,3 +22,4 @@ pod_coverage:
   # for either Class or method.
   private:
     - Alien::Build::Plugin::Gather::Dino
+    - Alien::Base::Dino

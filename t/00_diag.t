@@ -1,4 +1,4 @@
-use Test2::V0 -no_srand => 1;
+use Test2::V0;
 use Config;
 
 eval q{ require Test::More };
@@ -16,6 +16,7 @@ $modules{$_} = $_ for qw(
   ExtUtils::MakeMaker
   FFI::CheckLib
   Path::Tiny
+  Role::Tiny
   Test2::Mock
   Test2::V0
   Test::Alien
