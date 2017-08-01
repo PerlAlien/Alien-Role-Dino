@@ -13,6 +13,7 @@ $modules{$_} = $_ for qw(
   Alien::Autotools
   Alien::Base
   Alien::Build
+  Alien::Build::Plugin
   ExtUtils::MakeMaker
   FFI::CheckLib
   Path::Tiny
