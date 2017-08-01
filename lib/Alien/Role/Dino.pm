@@ -185,8 +185,6 @@ sub rpath
   @dir;
 }
 
-=head1 METHODS
-
 =head2 xs_load
 
  $alien->xs_load($package, $version);
