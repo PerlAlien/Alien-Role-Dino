@@ -13,7 +13,7 @@ use Path::Tiny qw( path );
 =head1 SYNOPSIS
 
  use alienfile;
- plugin 'Gather::Dini';
+ plugin 'Gather::Dino';
 
 =head1 DESCRIPTION
 
