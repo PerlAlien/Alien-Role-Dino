@@ -13,7 +13,7 @@ around xs_load => sub {
   my($orig, $self, $package, $version, @rest) = @_;
   local $ENV{PATH} = $ENV{PATH};
   unshift @PATH, $self->rpath(@rest);
-  $orig->($self, $package, $version, @rest) = @_;
+  $orig->($self, $package, $version, @rest);
 };
 
 1;
