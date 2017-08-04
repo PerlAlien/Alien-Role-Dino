@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.03      2017-08-04 15:07:43 -0400
   - Add missing prereq Class::Method::Modifiers
 
 0.02      2017-08-01 14:31:11 -0400
