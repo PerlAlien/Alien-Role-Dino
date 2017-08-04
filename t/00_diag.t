@@ -14,6 +14,7 @@ $modules{$_} = $_ for qw(
   Alien::Base
   Alien::Build
   Alien::Build::Plugin
+  Class::Method::Modifiers
   ExtUtils::MakeMaker
   FFI::CheckLib
   Path::Tiny
