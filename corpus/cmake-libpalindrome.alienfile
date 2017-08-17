@@ -27,4 +27,6 @@ share {
       $build->runtime_prop->{$_} = "-L$prefix/lib -lpalindrome" for qw( libs libs_static );
     }
   };
+
+  plugin 'Gather::Dino';
 };
