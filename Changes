@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - Remove Alien::Base::Dino as previously threatened
 
 0.03      2017-08-04 15:07:43 -0400
   - Add missing prereq Class::Method::Modifiers
