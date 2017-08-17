@@ -33,6 +33,8 @@ foreach my $type (qw( autoheck cmake ))
     {
       skip_all 'test requires Alien::Build::Plugin::Build::CMake and Alien::cmake3'
         unless eval q{ use Alien::Build::Plugin::Build::CMake; use Alien::cmake3; 1 };
+      # cmake-libpalindrome doesn't seem to generate a .a file for the dll
+      skip_all 'todo: MSWin32' if $^O eq 'MSWin32';
     }
 
     my $alien;
