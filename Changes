@@ -2,6 +2,9 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
   - Remove Alien::Base::Dino as previously threatened
+  - Add rpath flags to Alien on darwin / OS X class as with other platforms
+    With autoconf this did not appear necessary, but cmake tests show that
+    it is.
 
 0.03      2017-08-04 15:07:43 -0400
   - Add missing prereq Class::Method::Modifiers
