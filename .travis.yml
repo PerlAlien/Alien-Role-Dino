@@ -7,7 +7,7 @@ install:
   - cpanm -n Dist::Zilla
   - dzil authordeps --missing | cpanm -n
   - dzil listdeps   --missing | cpanm -n
-  - cpanm Alien::cmake3
+  - cpanm -n Alien::cmake3
 
 perl:
   - "5.14"
