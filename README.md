@@ -1,4 +1,4 @@
-# Alien::Role::Dino [![Build Status](https://secure.travis-ci.org/plicease/Alien-Role-Dino.png)](http://travis-ci.org/plicease/Alien-Role-Dino)
+# Alien::Role::Dino [![Build Status](https://secure.travis-ci.org/Perl5-Alien/Alien-Role-Dino.png)](http://travis-ci.org/Perl5-Alien/Alien-Role-Dino)
 
 Experimental support for dynamic share Alien install
 

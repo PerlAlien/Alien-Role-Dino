@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - Transferring to the Perl5-Alien orginzation
 
 0.04      2017-08-17 14:58:30 -0400
   - Remove Alien::Base::Dino as previously threatened
