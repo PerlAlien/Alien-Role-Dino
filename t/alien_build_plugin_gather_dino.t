@@ -4,6 +4,8 @@ use Alien::Build::Plugin::Gather::Dino;
 use Path::Tiny qw( path );
 use lib 'corpus/lib';
 
+$ENV{VERBOSE} = 1;
+
 {
   package Alien::MyDinoBase;
   
