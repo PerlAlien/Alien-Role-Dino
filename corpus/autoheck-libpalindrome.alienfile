@@ -11,7 +11,7 @@ plugin 'PkgConfig' => (
 share {
   requires 'Alien::Autotools';
 
-  meta->prop->{start_url} = path(__FILE__)->parent->child('libpalindrome')->stringify;
+  meta->prop->{start_url} = path(__FILE__)->parent->child('autoheck-libpalindrome')->stringify;
   plugin 'Fetch::LocalDir';
   plugin 'Extract::Directory';
   plugin 'Build::Autoconf';

@@ -5,7 +5,7 @@ use Alien::Base::Dino;
 use Path::Tiny qw( path );
 use lib 'corpus/lib';
 
-my $build = alienfile_ok filename => 'corpus/libpalindrome.alienfile';
+my $build = alienfile_ok filename => 'corpus/autoheck-libpalindrome.alienfile';
 
 my $alien = alien_build_ok { class => 'Alien::Base::Dino' };
 

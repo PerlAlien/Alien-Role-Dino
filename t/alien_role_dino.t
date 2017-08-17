@@ -31,7 +31,7 @@ subtest 'build' => sub {
     ],
   );
 
-  alienfile_ok filename => 'corpus/libpalindrome.alienfile';
+  alienfile_ok filename => 'corpus/autoheck-libpalindrome.alienfile';
 
   $alien = alien_build_ok { class => 'Alien::MyDinoBase' };
 
