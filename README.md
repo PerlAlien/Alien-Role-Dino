@@ -170,9 +170,6 @@ there.  Most modules I write are not like that.
 These platforms seem to work: Linux, OS X, Windows, Cygwin, FreeBSD, 
 NetBSD, OpenBSD, Debian kFreeBSD.
 
-Currently has [Alien::Autotools](https://metacpan.org/pod/Alien::Autotools) as a prerequisite.  I hope to remove that prereq
-asap.
-
 # SEE ALSO
 
 - [alienfile](https://metacpan.org/pod/alienfile)

@@ -9,7 +9,7 @@ plugin 'PkgConfig' => (
 );
 
 share {
-  requires 'Alien::Autotools';
+  meta->prop->{out_of_source} = 1;
 
   meta->prop->{start_url} = path(__FILE__)->parent->child('autoheck-libpalindrome')->stringify;
   plugin 'Fetch::LocalDir';
@@ -17,7 +17,7 @@ share {
   plugin 'Build::Autoconf';
   
   build [
-    (map { $^O eq 'MSWin32' ? ['sh', -c => $_] : $_ } ('autoreconf -vfi')),
+    #(map { $^O eq 'MSWin32' ? ['sh', -c => $_] : $_ } ('autoreconf -vfi')),
     '%{configure} --enable-shared --disable-static',
     '%{make}',
     '%{make} install',

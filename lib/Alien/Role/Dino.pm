@@ -227,9 +227,6 @@ there.  Most modules I write are not like that.
 These platforms seem to work: Linux, OS X, Windows, Cygwin, FreeBSD, 
 NetBSD, OpenBSD, Debian kFreeBSD.
 
-Currently has L<Alien::Autotools> as a prerequisite.  I hope to remove that prereq
-asap.
-
 =head1 SEE ALSO
 
 =over 4

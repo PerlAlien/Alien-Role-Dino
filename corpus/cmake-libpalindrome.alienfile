@@ -4,6 +4,7 @@ use Path::Tiny qw( path );
 probe sub { 'share' };
 
 share {
+  meta->prop->{out_of_source} = 1;
 
   meta->prop->{start_url} = path(__FILE__)->parent->child('cmake-libpalindrome')->stringify;
   plugin 'Fetch::LocalDir';
