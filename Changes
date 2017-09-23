@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - Add support for Solaris (gcc and sun studio)
 
 0.05      2017-08-17 16:53:17 -0400
   - Transferring to the Perl5-Alien orginzation
