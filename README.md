@@ -1,4 +1,4 @@
-# Alien::Role::Dino [![Build Status](https://secure.travis-ci.org/Perl5-Alien/Alien-Role-Dino.png)](http://travis-ci.org/Perl5-Alien/Alien-Role-Dino)
+# Alien::Role::Dino [![Build Status](https://travis-ci.org/PerlAlien/Alien-Role-Dino.svg)](http://travis-ci.org/PerlAlien/Alien-Role-Dino)
 
 Experimental support for dynamic share Alien install
 
@@ -6,37 +6,43 @@ Experimental support for dynamic share Alien install
 
 In your [alienfile](https://metacpan.org/pod/alienfile):
 
-    use alienfile;
-    
-    share {
-      ...
-      plugin 'Gather::Dino';
-    }
+```perl
+use alienfile;
+
+share {
+  ...
+  plugin 'Gather::Dino';
+}
+```
 
 Apply [Alien::Role::Dino](https://metacpan.org/pod/Alien::Role::Dino) to your [Alien::Base](https://metacpan.org/pod/Alien::Base) subclass:
 
-    package Alien::libfoo;
-    
-    use base qw( Alien::Base );
-    use Role::Tiny::With qw( with );
-    
-    with 'Alien::Role::Dino';
-    
-    1;
+```perl
+package Alien::libfoo;
+
+use base qw( Alien::Base );
+use Role::Tiny::With qw( with );
+
+with 'Alien::Role::Dino';
+
+1;
+```
 
 And finally from the .pm side of your XS module:
 
-    package Foo::XS;
-    
-    use Alien::libfoo;
-    
-    our $VERSION = '1.00';
-    
-    # Note caveat: your Alien is now a run-time
-    # dependency of your XS module.
-    Alien::libfoo->xs_load(__PACKAGE__, $VERSION);
-    
-    1;
+```perl
+package Foo::XS;
+
+use Alien::libfoo;
+
+our $VERSION = '1.00';
+
+# Note caveat: your Alien is now a run-time
+# dependency of your XS module.
+Alien::libfoo->xs_load(__PACKAGE__, $VERSION);
+
+1;
+```
 
 # DESCRIPTION
 
@@ -145,7 +151,9 @@ because that was getting a bit wordy.  So Dino.
 
 ## rpath
 
-    my @dirs = $alien->rpath;
+```perl
+my @dirs = $alien->rpath;
+```
 
 Returns the list of directories that have non-system dynamic libraries
 in them.  On some systems this is needed at compile time, on others
@@ -153,8 +161,10 @@ it is needed at run time.
 
 ## xs\_load
 
-    $alien->xs_load($package, $version);
-    $alien->xs_load($package, $version, @other_dino_aliens);
+```
+$alien->xs_load($package, $version);
+$alien->xs_load($package, $version, @other_dino_aliens);
+```
 
 # CAVEATS
 

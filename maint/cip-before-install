@@ -1,0 +1,5 @@
+#!/bin/sh
+
+set -ex
+
+cip exec cpanm -n Alien::Autotools Alien::Build::Plugin::Build::CMake Alien::cmake3
