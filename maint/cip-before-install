@@ -2,4 +2,6 @@
 
 set -ex
 
+cip sudo apt-get update
+cip sudo apt-get install g++
 cip exec cpanm -n Alien::Autotools Alien::Build::Plugin::Build::CMake Alien::cmake3
