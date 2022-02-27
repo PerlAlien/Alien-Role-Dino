@@ -17,26 +17,58 @@ jobs:
       fail-fast: false
       matrix:
         cip:
-          - tag: "static"
           - tag: "5.35"
+            packages: Alien::Autotools Alien::Build::Plugin::Build::CMake Alien::cmake3
+            cache: 3
           - tag: "5.34"
+            packages: Alien::Autotools Alien::Build::Plugin::Build::CMake Alien::cmake3
+            cache: 3
+          - tag: "5.34"
+            packages: ''
+            cache: 4
           - tag: "5.32"
+            packages: Alien::Autotools Alien::Build::Plugin::Build::CMake Alien::cmake3
+            cache: 3
           - tag: "5.30"
+            packages: Alien::Autotools Alien::Build::Plugin::Build::CMake Alien::cmake3
+            cache: 3
           - tag: "5.28"
+            packages: Alien::Autotools Alien::Build::Plugin::Build::CMake Alien::cmake3
+            cache: 3
           - tag: "5.26"
+            packages: Alien::Autotools Alien::Build::Plugin::Build::CMake Alien::cmake3
+            cache: 3
           - tag: "5.24"
+            packages: Alien::Autotools Alien::Build::Plugin::Build::CMake Alien::cmake3
+            cache: 3
           - tag: "5.22"
+            packages: Alien::Autotools Alien::Build::Plugin::Build::CMake Alien::cmake3
+            cache: 3
           - tag: "5.20"
+            packages: Alien::Autotools Alien::Build::Plugin::Build::CMake Alien::cmake3
+            cache: 3
           - tag: "5.18"
+            packages: Alien::Autotools Alien::Build::Plugin::Build::CMake Alien::cmake3
+            cache: 3
           - tag: "5.16"
+            packages: Alien::Autotools Alien::Build::Plugin::Build::CMake Alien::cmake3
+            cache: 3
           - tag: "5.14"
+            packages: Alien::Autotools Alien::Build::Plugin::Build::CMake Alien::cmake3
+            cache: 3
           - tag: "5.12"
+            packages: Alien::Autotools Alien::Build::Plugin::Build::CMake Alien::cmake3
+            cache: 3
           - tag: "5.10"
+            packages: Alien::Autotools Alien::Build::Plugin::Build::CMake Alien::cmake3
+            cache: 3
           - tag: "5.8"
+            packages: Alien::Autotools Alien::Build::Plugin::Build::CMake Alien::cmake3
+            cache: 3
 
     env:
       CIP_TAG: ${{ matrix.cip.tag }}
-
+      CIP_PACKAGES: ${{ matrix.cip.packages }}
 
     steps:
       - uses: actions/checkout@v2
@@ -55,9 +87,9 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ~/.cip
-          key: ${{ runner.os }}-build1-${{ steps.cache-key.outputs.key }}
+          key: ${{ runner.os }}-build-${{ matrix.cip.cache }}-${{ steps.cache-key.outputs.key }}
           restore-keys: |
-            ${{ runner.os }}-build1-${{ steps.cache-key.outputs.key }}
+            ${{ runner.os }}-build-${{ matrix.cip.cache }}-${{ steps.cache-key.outputs.key }}
 
       - name: Start-Container
         run: |
