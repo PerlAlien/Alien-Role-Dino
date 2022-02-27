@@ -10,11 +10,9 @@ my %modules;
 my $post_diag;
 
 $modules{$_} = $_ for qw(
-  Alien::Autotools
   Alien::Base
   Alien::Build
   Alien::Build::Plugin
-  Alien::cmake3
   Class::Method::Modifiers
   ExtUtils::MakeMaker
   FFI::CheckLib
