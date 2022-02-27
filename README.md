@@ -1,4 +1,4 @@
-# Alien::Role::Dino ![linux](https://github.com/PerlAlien/Alien-Role-Dino/workflows/linux/badge.svg)
+# Alien::Role::Dino ![linux](https://github.com/PerlAlien/Alien-Role-Dino/workflows/linux/badge.svg) ![static](https://github.com/PerlAlien/Alien-Role-Dino/workflows/static/badge.svg)
 
 Experimental support for dynamic share Alien install
 
