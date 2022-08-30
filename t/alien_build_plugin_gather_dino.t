@@ -8,11 +8,11 @@ $ENV{VERBOSE} = 1;
 
 # Tests use fetch from local direcory, whidh is not
 # supported by check_digest
-if($ENV{ALIEN_DOWNLOAD_RULE} eq 'digest_and_encrypt')
+if(defined $ENV{ALIEN_DOWNLOAD_RULE} && $ENV{ALIEN_DOWNLOAD_RULE} eq 'digest_and_encrypt')
 {
   $ENV{ALIEN_DOWNLOAD_RULE} = 'digest_or_encrypt';
 }
-elsif($ENV{ALIEN_DOWNLOAD_RULE} eq 'digest')
+elsif(defined $ENV{ALIEN_DOWNLOAD_RULE} && $ENV{ALIEN_DOWNLOAD_RULE} eq 'digest')
 {
   $ENV{ALIEN_DOWNLOAD_RULE} = 'warn';
 }
