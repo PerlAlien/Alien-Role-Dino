@@ -24,6 +24,26 @@ jobs:
             packages: Alien::Autotools Alien::Build::Plugin::Build::CMake Alien::cmake3
             cache: 3
           - tag: "5.36"
+            packages: Alien::Autotools Alien::Build::Plugin::Build::CMake Alien::cmake3
+            env: ALIEN_DOWNLOAD_RULE=warn
+            cache: 3
+          - tag: "5.36"
+            packages: Alien::Autotools Alien::Build::Plugin::Build::CMake Alien::cmake3
+            env: ALIEN_DOWNLOAD_RULE=digest
+            cache: 3
+          - tag: "5.36"
+            packages: Alien::Autotools Alien::Build::Plugin::Build::CMake Alien::cmake3
+            env: ALIEN_DOWNLOAD_RULE=encrypt
+            cache: 3
+          - tag: "5.36"
+            packages: Alien::Autotools Alien::Build::Plugin::Build::CMake Alien::cmake3
+            env: ALIEN_DOWNLOAD_RULE=digest_or_encrypt
+            cache: 3
+          - tag: "5.36"
+            packages: Alien::Autotools Alien::Build::Plugin::Build::CMake Alien::cmake3
+            env: ALIEN_DOWNLOAD_RULE=digest_and_encrypt
+            cache: 3
+          - tag: "5.36"
             packages: ''
             cache: 4
           - tag: "5.34"
@@ -71,6 +91,7 @@ jobs:
 
     env:
       CIP_TAG: ${{ matrix.cip.tag }}
+      CIP_ENV: ${{ matrix.cip.env }}
       CIP_PACKAGES: ${{ matrix.cip.packages }}
 
     steps:
