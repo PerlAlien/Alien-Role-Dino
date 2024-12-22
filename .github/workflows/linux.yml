@@ -17,35 +17,41 @@ jobs:
       fail-fast: false
       matrix:
         cip:
-          - tag: "5.37"
+          - tag: "5.41"
             packages: Alien::Autotools Alien::Build::Plugin::Build::CMake Alien::cmake3
             cache: 3
-          - tag: "5.36"
+          - tag: "5.40"
             packages: Alien::Autotools Alien::Build::Plugin::Build::CMake Alien::cmake3
             cache: 3
-          - tag: "5.36"
+          - tag: "5.40"
             packages: Alien::Autotools Alien::Build::Plugin::Build::CMake Alien::cmake3
             env: ALIEN_DOWNLOAD_RULE=warn
             cache: 3
-          - tag: "5.36"
+          - tag: "5.40"
             packages: Alien::Autotools Alien::Build::Plugin::Build::CMake Alien::cmake3
             env: ALIEN_DOWNLOAD_RULE=digest
             cache: 3
-          - tag: "5.36"
+          - tag: "5.40"
             packages: Alien::Autotools Alien::Build::Plugin::Build::CMake Alien::cmake3
             env: ALIEN_DOWNLOAD_RULE=encrypt
             cache: 3
-          - tag: "5.36"
+          - tag: "5.40"
             packages: Alien::Autotools Alien::Build::Plugin::Build::CMake Alien::cmake3
             env: ALIEN_DOWNLOAD_RULE=digest_or_encrypt
             cache: 3
-          - tag: "5.36"
+          - tag: "5.40"
             packages: Alien::Autotools Alien::Build::Plugin::Build::CMake Alien::cmake3
             env: ALIEN_DOWNLOAD_RULE=digest_and_encrypt
             cache: 3
-          - tag: "5.36"
+          - tag: "5.40"
             packages: ''
             cache: 4
+          - tag: "5.38"
+            packages: Alien::Autotools Alien::Build::Plugin::Build::CMake Alien::cmake3
+            cache: 3
+          - tag: "5.36"
+            packages: Alien::Autotools Alien::Build::Plugin::Build::CMake Alien::cmake3
+            cache: 3
           - tag: "5.34"
             packages: Alien::Autotools Alien::Build::Plugin::Build::CMake Alien::cmake3
             cache: 3
