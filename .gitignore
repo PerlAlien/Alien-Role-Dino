@@ -2,3 +2,5 @@
 /.build
 /.tmp
 *.swp
+*.old
+*.orig
